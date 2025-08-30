@@ -3,11 +3,6 @@ body {
     font-family: 'Inter', Arial, sans-serif;
     background: #14091b;
 }
-.container {
-    max-width: 420px;
-    margin: 0 auto;
-    padding: 0 16px;
-}
 .hero {
     background: radial-gradient(120% 60% at 20% 0%, #2a1933 0%, #1a1420 60%, #120e16 100%);
     padding: 56px 0 28px;
@@ -86,28 +81,9 @@ body {
     background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.26));
 }
 
-/* Индивидуальные картинки и их позиция */
-.hero-grid .hero-card:nth-child(1){
-    background-image: url('../img/hero/human-one.jpg');
-    background-position: 50% 18%;
-}
-.hero-grid .hero-card:nth-child(2){
-    background-image: url('../img/hero/human-two.jpg');
-    background-position: 58% 34%;
-}
-.hero-grid .hero-card:nth-child(3){
-    background-image: url('../img/hero/human-three.jpg');
-    background-position: 50% 22%;
-}
-.hero-grid .hero-card:nth-child(4){
-    background-image: url('../img/hero/human-four.jpg');
-    background-position: 50% 35%;
-}
-.hero-grid .hero-card:nth-child(5){
-    background-image: url('../img/hero/human-five.jpg');
-    background-position: 50% 24%;
-}
-.hero-grid .hero-card:nth-child(6){
-    background-image: url('../img/hero/human-six.jpg');
-    background-position: 50% 38%;
-}
+.hero-grid .hero-card:nth-of-type(1){ background-image: url('/img/hero/human-one.jpg');  }
+.hero-grid .hero-card:nth-of-type(2){ background-image: url('/img/hero/human-two.jpg'); }
+.hero-grid .hero-card:nth-of-type(3){ background-image: url('/img/hero/human-three.jpg'); }
+.hero-grid .hero-card:nth-of-type(4){ background-image: url('/img/hero/human-four.jpg'); }
+.hero-grid .hero-card:nth-of-type(5){ background-image: url('/img/hero/human-five.jpg'); }
+.hero-grid .hero-card:nth-of-type(6){ background-image: url('/img/hero/human-six.jpg'); }
