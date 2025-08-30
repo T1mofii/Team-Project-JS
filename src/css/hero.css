@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    background: #14091b;
+}
+.container {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+.hero {
+    background: radial-gradient(120% 60% at 20% 0%, #2a1933 0%, #1a1420 60%, #120e16 100%);
+    padding: 56px 0 28px;
+    color: #fff;
+    position: relative;
+    isolation: isolate;
+}
+.hero-content {
+    z-index: 2;
+    position: relative;
+}
+.hero-title {
+    font-weight: 700;
+    font-size: 38px;
+    line-height: 110%;
+    letter-spacing: -0.01em;
+    max-width: 288px;
+    margin-bottom: 20px;
+}
+.hero-subtitle {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 150%;
+    max-width: 288px;
+    margin-bottom: 24px;
+}
+.div-a {
+    margin-bottom: 40px;
+}
+.hero-btn {
+    border-radius: 12px;
+    padding: 10px 65px 10px;
+    width: 288px;
+    height: 47px;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,.05), inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0,0,0,.15), inset 0 2px 1px 0 rgba(255,255,255,0.25), inset 0 32px 24px 0 rgba(255,255,255,0.05);
+    background: #743c85;
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hero-btn-label {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 150%;
+}
+
+/* FLEXBOX сетка */
+.hero-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+/* 2 колонки: каждая карточка занимает половину ширины минус gap */
+.hero-card {
+    flex: 0 1 calc(50% - 8px); /* 2 колонки с отступом */
+    aspect-ratio: 4 / 5;
+    border-radius: 16px;
+    overflow: hidden;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,.35);
+    position: relative;
+    margin-bottom: 0; /* не добавляй margin-bottom, rely on gap */
+}
+.hero-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.26));
+}
+
+/* Индивидуальные картинки и их позиция */
+.hero-grid .hero-card:nth-child(1){
+    background-image: url('../img/hero/human-one.jpg');
+    background-position: 50% 18%;
+}
+.hero-grid .hero-card:nth-child(2){
+    background-image: url('../img/hero/human-two.jpg');
+    background-position: 58% 34%;
+}
+.hero-grid .hero-card:nth-child(3){
+    background-image: url('../img/hero/human-three.jpg');
+    background-position: 50% 22%;
+}
+.hero-grid .hero-card:nth-child(4){
+    background-image: url('../img/hero/human-four.jpg');
+    background-position: 50% 35%;
+}
+.hero-grid .hero-card:nth-child(5){
+    background-image: url('../img/hero/human-five.jpg');
+    background-position: 50% 24%;
+}
+.hero-grid .hero-card:nth-child(6){
+    background-image: url('../img/hero/human-six.jpg');
+    background-position: 50% 38%;
+}
