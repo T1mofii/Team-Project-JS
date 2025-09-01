@@ -1,9 +1,9 @@
 // Imports
 import axios from "axios";
-import { stackTraceLimit } from "postcss/lib/css-syntax-error";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-
+import { getArtistAlbums } from './requests.js';
+import { openArtistModal } from './modal-menu.js'; // Импортируем функцию открытия модалки
 
 // Search Elements
 const refs = {
@@ -12,18 +12,12 @@ const refs = {
     btnLoadMore: document.querySelector('.js-artist-loadmore-btn'),
 }
 
-
-
-
-
 // Function on Api
 async function getArtistForQuery(page) {
   const res = await axios.get('https://sound-wave.b.goit.study/api/artists', { 
     params: { page:page, limit:8, } 
   });
     return res.data;
-    console.log(res.data);
-    
 }
 
 // Slice function
@@ -62,7 +56,7 @@ function createArtists(artists) {
                     </p>
                 </div>
                 <div class="btn-learn-more-cont">
-                    <button type="button" class="artist-learn-btn" data-artist-id="artist-modal">Learn More </button>
+                    <button type="button" class="artist-learn-btn" data-artist-id="${artist._id}">Learn More </button>
                     <svg width="8" height="15" viewBox="0 0 8 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0 14.5492L8 7.54919L0 0.549194V14.5492Z" fill="white" />
                     </svg>
@@ -71,6 +65,15 @@ function createArtists(artists) {
     }).join('');
     return markup;
     
+}
+
+// НОВАЯ ФУНКЦИЯ: Вставка карточек в DOM
+function renderArtistsToDOM(artistsMarkup) {
+    if (!refs.cardItem) {
+        console.error('Container .js-artist-card not found');
+        return;
+    }
+    refs.cardItem.innerHTML = artistsMarkup;
 }
 
 // Functions
@@ -86,7 +89,6 @@ function hideLoader() {
     }
 }
 
-
 function showLoadMoreButton() {
     refs.btnLoadMore.disabled = false;
     refs.btnLoadMore.classList.add('artist-load-more-btn-is-active');
@@ -95,6 +97,44 @@ function showLoadMoreButton() {
 function hideLoadMoreButton() {
     refs.btnLoadMore.disabled = true;
     refs.btnLoadMore.classList.remove('artist-load-more-btn-is-active');
+}
+
+// Функция для обработки клика на кнопку Learn More
+async function handleLearnMoreClick(event) {
+    const learnMoreBtn = event.target.closest('.artist-learn-btn');
+    if (!learnMoreBtn) return;
+    
+    const artistId = learnMoreBtn.dataset.artistId;
+    const artistName = learnMoreBtn.closest('.artist-card-item').querySelector('.card-item-title').textContent;
+    
+    if (!artistId) {
+        iziToast.error({
+            message: 'Artist ID not found'
+        });
+        return;
+    }
+    
+    console.log('Opening modal for artist:', artistName, 'ID:', artistId);
+    
+    try {
+        // Показываем лоадер на кнопке
+        const originalText = learnMoreBtn.textContent;
+        learnMoreBtn.disabled = true;
+        learnMoreBtn.textContent = 'Loading...';
+        
+        // ВАЖНО: используем вашу существующую функцию openArtistModal
+        await openArtistModal(artistId);
+        
+    } catch (error) {
+        console.error('Error opening modal:', error);
+        iziToast.error({
+            message: 'Failed to open artist details. Please try again.'
+        });
+    } finally {
+        // Восстанавливаем кнопку
+        learnMoreBtn.disabled = false;
+        learnMoreBtn.textContent = 'Learn More';
+    }
 }
 
 let currentPage;
@@ -110,8 +150,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         const arrOfArtist = res.artists;
         const markup = createArtists(arrOfArtist);
         
-        refs.cardItem.innerHTML = markup;
+        // ВСТАВЛЯЕМ разметку в DOM - ЭТО ГЛАВНОЕ ИСПРАВЛЕНИЕ
+        renderArtistsToDOM(markup);
 
+        // Добавляем обработчик кликов на карточки
+        refs.cardItem.addEventListener('click', handleLearnMoreClick);
 
         maxPage = Math.ceil(res.totalArtists / pageSize);
         if (currentPage < maxPage) {
@@ -123,11 +166,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             });
         }
         
-    } catch {
+    } catch (error) {
+        console.error('Error loading artists:', error);
         maxPage = 0;
         iziToast.error({
             message: 'Sorry. Please try again!'
-        })
+        });
     } finally {
         hideLoader();
     }
@@ -149,6 +193,8 @@ refs.btnLoadMore.addEventListener('click', async () => {
         }
         const arrOfArtist = res.artists;
         const markup = createArtists(arrOfArtist);
+        
+        // ВСТАВЛЯЕМ новую разметку в конец существующей
         refs.cardItem.insertAdjacentHTML('beforeend', markup);
 
         const firstCard = document.querySelector('.artist-card-item');
@@ -158,11 +204,12 @@ refs.btnLoadMore.addEventListener('click', async () => {
             top: cardHeight * 2,
             behavior: "smooth"
         });
-    } catch {
+    } catch (error) {
+        console.error('Error loading more artists:', error);
         iziToast.error({
             message: 'Sorry, there are no information. Please try again!'
         });
-    }finally {
+    } finally {
         hideLoader();
         if (currentPage < maxPage) {
             showLoadMoreButton();
@@ -174,7 +221,3 @@ refs.btnLoadMore.addEventListener('click', async () => {
         }
     }
 });
-
-
-
-
