@@ -1,26 +1,37 @@
-/* === Raty stars === */
-.raty {
-  display: flex;
-  line-height: 1;
+/* === Прихований заголовок для доступності === */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
-.raty img {
-  width: 20px;
-  height: 20px;
-  margin: 0 2px;
-  cursor: pointer;
+/* === Блок відгуків (основний контейнер) === */
+.feedback-section {
+  margin: 50px 20px 0 20px;
+  padding: 64px 16px 32px 16px;
 }
 
-.raty.read-only img {
-  cursor: default;
+.swiper {
+  position: relative;
+  margin-bottom: 80px;
 }
 
-.raty .raty-star {
-  display: inline-block;
-}
-
-/* === Swiper slides === */
+/* === Слайд відгуку === */
 .swiper-slide {
+  text-align: center;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-sizing: border-box;
   margin: 64px 0 16px 0;
 }
 
@@ -28,134 +39,219 @@
   margin-bottom: 16px;
 }
 
-.stars {
-  text-align: center;
-  margin-bottom: 32px;
-  display: flex;
-  justify-content: center;
-}
-
 .review {
   text-align: center;
+  font-family: var(--font-secondary, 'Epilogue', sans-serif);
   font-weight: 700;
   font-size: 18px;
   line-height: 140%;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: var(--color-white, #fff);
   margin-bottom: 32px;
+  max-height: 180px;
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 .author {
   text-align: center;
+  font-family: var(--font-primary, 'IBM Plex Sans', sans-serif);
   font-weight: 600;
   font-size: 18px;
   line-height: 150%;
-  color: #fff;
+  color: var(--color-white, #fff);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }
 
-/* === Navigation buttons === */
+/* === Зірки рейтингу === */
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  font-size: 24px;
+  color: #764191;
+  margin-bottom: 32px;
+}
+
+/* === Кнопки навігації Swiper (стрілки) === */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none !important;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-neutral-darkest, #1a1a1a);
+  border-radius: 8px;
+  border: 1px solid var(--color-neutral-darker, #333);
+  width: 48px !important;
+  height: 48px !important;
+  opacity: 1;
+  color: var(--color-white, #fff);
+  font-size: 0;
+  transform: rotate(0deg);
+  top: 50% !important; /* ← Центрируем по вертикали */
+  transform: translateY(-50%) rotate(0deg); /* ← Центрируем точно */
+  transition: background 0.1s, color 0.1s;
+}
+
+.swiper-button-next:active,
+.swiper-button-prev:active {
+  background: var(--color-neutral-darker, #333);
+}
+
+.swiper-button-next:active svg,
+.swiper-button-prev:active svg {
+  color: var(--color-white, #fff);
+  fill: var(--color-white, #fff);
+}
+
 .swiper-button-prev::after,
 .swiper-button-next::after {
-  display: none;
+  display: none !important;
 }
 
-.swiper-button-prev,
-.swiper-button-next {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  border: 2px solid white;
-  background-color: rgba(255, 255, 255, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: var(--color-neutral-darker, #333);
 }
 
-/* === Pagination === */
+/* === SVG-іконки стрілок у кнопках навігації === */
+.swiper-button-next svg,
+.swiper-button-prev svg {
+  width: 24px;
+  height: 24px;
+  display: block;
+  fill: currentColor;
+  transition: color 0.1s, fill 0.1s;
+}
+
+/* === Пагінація Swiper (крапки) === */
 .swiper-pagination {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .swiper-pagination-bullet {
-  width: 9px;
-  height: 9px;
-  background-color: rgba(255, 255, 255, 0.5);
+  width: 8px;
+  height: 8px;
+  background: var(--color-neutral, #828183) !important;
   border-radius: 50%;
   opacity: 1;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
   cursor: pointer;
+  margin: 0 5px;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #fff;
+  background: var(--color-scheme-1-text, #fff) !important;
+  transform: scale(1.3);
 }
 
-.is-hidden {
-  visibility: hidden;
+.swiper-pagination-bullet:hover {
+  background: rgba(255, 255, 255, 0.8) !important;
+  transform: scale(1.2);
 }
 
-/* === Tablet === */
-@media only screen and (min-width: 768px) {
+/* === Кнопка "Залишити відгук" === */
+.leave-feedback-btn {
+  border-radius: 12px;
+  display: block;
+  width: 288px;
+  max-width: 100%;
+  margin: 32px auto 0 auto;
+  height: 47px;
+  box-shadow: 0 1px 2px 0 var(--opacity-white-5),
+    inset 0 -2px 1px 0 var(--opacity-neutral-darkest-20),
+    inset 0 0 0 1px var(--opacity-white-15),
+    inset 0 2px 1px 0 var(--opacity-white-25),
+    inset 0 32px 24px 0 var(--opacity-white-5);
+  background-color: var(--color-affair, #764191);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--color-white, #fff);
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.leave-feedback-btn:hover {
+  opacity: 0.6;
+}
+
+/* === Адаптив (планшет) === */
+@media (min-width: 768px) {
+  .feedback-section {
+    padding: 64px 32px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    display: flex !important;
+  }
+
   .review {
     font-size: 26px;
-  }
-  .feedback-value {
+    max-height: 240px;
     padding: 0 93px;
   }
-  .is-hidden {
-    visibility: visible;
+
+  .swiper-pagination {
+    gap: 15px;
+    margin-top: 30px;
   }
 
-  .swiper-button-prev,
-  .swiper-button-next {
-    width: 48px;
-    height: 48px;
-  }
-
-  .swiper-button-prev {
-    left: 16px; /* чуть внутрь */
-  }
-
-  .swiper-button-next {
-    right: 16px; /* чуть внутрь */
+  .leave-feedback-btn {
+    max-width: 340px;
+    margin: 0 auto;
   }
 }
 
-/* === Desktop === */
-@media only screen and (min-width: 1440px) {
+/* === Адаптив (десктоп) === */
+@media (min-width: 1440px) {
+  .feedback-section {
+    padding: 112px 64px;
+  }
+
   .swiper-wrapper {
     padding: 59px 0;
     margin-bottom: 16px;
   }
 
-  .swiper-button-prev,
-  .swiper-button-next {
-    width: 56px;
-    height: 56px;
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 56px !important;
+    height: 56px !important;
   }
 
   .swiper-button-prev {
-    left: 40px; /* внутрь от края */
+    left: 40px;
   }
 
   .swiper-button-next {
-    right: 40px; /* внутрь от края */
+    right: 40px;
   }
 
   .review {
     font-size: 32px;
     line-height: 130%;
-  }
-
-  .feedback-value {
+    max-height: 320px;
     padding: 0 223px;
   }
 
-  .is-hidden {
-    visibility: visible;
+  .author {
+    margin-bottom: 60px;
+  }
+
+  .swiper-pagination {
+    margin-top: 40px;
+  }
+
+  .leave-feedback-btn {
+    max-width: 170px;
   }
 }
