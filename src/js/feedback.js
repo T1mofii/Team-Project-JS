@@ -4,6 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Navigation, Pagination } from 'swiper/modules';
+import Raty from 'raty-js';
 
 const swiper = new Swiper('.swiper', {
   direction: 'horizontal',
@@ -11,12 +12,6 @@ const swiper = new Swiper('.swiper', {
   pagination: {
     el: '.swiper-pagination',
     clickable: true,
-    /* renderBullet: function (index, className) {
-      if (index < 3) {
-        return `<span class="${className}"></span>`;
-      }
-      return ''; // скрываем остальные
-    }, */
   },
   navigation: {
     nextEl: '.swiper-button-next',
@@ -60,7 +55,7 @@ export function createSlidesFeedback(dataFdb) {
         <div class="swiper-slide">
           <div class="feedback-value">
             <div class="stars">
-              <p>${rating}</p>
+              <div class="raty" data-score="${Math.round(rating)}"></div>
             </div>
             <div class="review">
               <p>${descr}</p>
@@ -75,7 +70,6 @@ export function createSlidesFeedback(dataFdb) {
     .join('');
   feedbackMarkup.insertAdjacentHTML('beforeend', markup);
 }
-// createSlidesFeedback(dataFdb);
 
 function setupCustomPagination(swiper) {
   const pagination = document.querySelector('.swiper-pagination');
@@ -109,7 +103,6 @@ function setupCustomPagination(swiper) {
   updatePagination();
   swiper.on('slideChange', updatePagination);
 
-  // при клике перелистываем на нужный индекс
   dots.left.addEventListener('click', () => swiper.slideTo(0));
   dots.middle.addEventListener('click', () => swiper.slideTo(5));
   dots.right.addEventListener('click', () => {
@@ -120,6 +113,17 @@ function setupCustomPagination(swiper) {
     }
   });
 }
+function initRaty() {
+  document.querySelectorAll('.raty').forEach(el => {
+    new Raty(el, {
+      score: el.dataset.score,
+      readOnly: true,
+      path: '../img',
+    }).init();
+  });
+}
+
 createSlidesFeedback(dataFdb);
+initRaty();
 swiper.update();
 setupCustomPagination(swiper);

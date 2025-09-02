@@ -1,44 +1,56 @@
+/* raty.css — базовые стили для raty-js */
 
+.raty {
+    display: flex;
+    line-height: 1;
+}
 
-/* Styles for Mobile devices */
-/* .feedback-container{
+.raty img {
+    width: 20px;
+    height: 20px;
+    margin: 0 2px;
+    cursor: pointer;
+}
 
-} */
+.raty.read-only img {
+    cursor: default;
+}
+
+.raty .raty-star {
+    display: inline-block;
+}
 .swiper-slide {
-/* display: flex; */
-/* flex-direction: column; */
-/* align-items: center;
-justify-content: center; */
 margin: 64px 0 16px 0;
-/* gap: 16px; */
 }
 .feedback-value {
-    display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 32px;
+margin-bottom: 16px;
 }
-.stars {}
+.stars {
+    text-align: center;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: center;
+}
 .review {
-        font-weight: 700;
-        font-size: 18px;
-        line-height: 140%;
-        letter-spacing: -0.01em;
-        text-align: center;
-        color: #fff
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 140%;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-bottom: 32px;
 }
 .author {
-        font-weight: 600;
-        font-size: 18px;
-        line-height: 150%;
-        color: #fff
+    text-align: center;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 150%;
+    color: #fff
 }
-/* .point {} */
 
-.swiper {
-    width: 100%;
-    height: 100%;
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    display: none;
 }
 
 .swiper-pagination {
@@ -59,9 +71,9 @@ margin: 64px 0 16px 0;
 .swiper-pagination .dot.active {
     background-color: #fff;
 }
-.is-hidden{
-    visibility: hidden;
-}
+
+.is-hidden {
+    visibility: hidden;}
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
     .review {
@@ -73,6 +85,31 @@ margin: 64px 0 16px 0;
 .is-hidden {
     visibility: visible;
 }
+.swiper-button-prev {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 2px solid white;
+        background-color: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        left: 0;
+    }
+
+.swiper-button-next {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    border: 2px solid white;
+        background-color: rgba(255, 255, 255, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        right: 0;
+}
 }
 
 /* Styles for Desktop devices */
@@ -81,10 +118,32 @@ margin: 64px 0 16px 0;
         padding: 59px 0;
         margin-bottom: 16px;
     }
-    .swiper-slide {
-            margin: 112px 0;
+        .swiper-button-prev {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            border: 2px solid white;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            left: 0;
         }
-    .review {
+    
+        .swiper-button-next {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+            border: 2px solid white;
+            background-color: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            right: 0;
+        }
+   .review {
                 font-size: 32px;
                 line-height: 130%;
         }
