@@ -13,7 +13,6 @@
   line-height: 1.5;
   color: #fff;
   margin-bottom: 16px;
- 
 }
 
 .artist-second-title {
@@ -210,7 +209,7 @@
     min-width: 1440px;
   }
   .artists-title {
-    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   }
   .artist-second-title {
     font-size: 60px;
