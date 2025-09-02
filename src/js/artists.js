@@ -192,13 +192,20 @@ refs.btnLoadMore.addEventListener('click', async () => {
         refs.cardItem.insertAdjacentHTML('beforeend', markup);
 
         // Прокручуємо до першої нової картки
+        // Прокручуємо до першої нової картки з відступом 72px
         const newCards = refs.cardItem.querySelectorAll('.artist-card-item');
         if (newCards.length > 0) {
             const firstNewCard = newCards[newCards.length - arrOfArtist.length];
-            firstNewCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
 
-    } catch (error) {
+            const elementPosition = firstNewCard.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementPosition - 72;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    }catch (error) {
         console.error('Error loading more artists:', error);
         iziToast.error({
             message: 'Sorry, there are no information. Please try again!'
