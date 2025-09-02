@@ -4,94 +4,91 @@ import {
   noDataIzT,
   successDataIzT,
 } from './izitoast.js';
+
 axios.defaults.baseURL = 'https://sound-wave.b.goit.study/api/';
 let DATA_PASS;
 export let MAX_PAGE_ARTIST = 1;
 
+// ================= UTILS =================
+async function fetchData(endpoint, params = {}) {
+  try {
+    const res = await axios.get(endpoint, { params });
+    return res.data;
+  } catch (error) {
+    errorApiIzT(error);
+    return null;
+  }
+}
+
+function getRandomInt(n) {
+  return Math.floor(Math.random() * n) + 1;
+}
+
+// ================= ARTISTS =================
 export async function getArtists({ name, page, sortName, genre } = {}) {
   DATA_PASS = 'artists';
   const params = {
     limit: 8,
-    page: page,
-    name,
-    sortName,
-    genre,
+    page,
+    ...(name && { name }),
+    ...(sortName && { sortName }),
+    ...(genre && { genre }),
   };
-  try {
-    const res = await axios.get(DATA_PASS, { params });
 
-    const artists = res.data.artists;
-    MAX_PAGE_ARTIST = Math.ceil(res.data.totalArtists / params.limit);
-    if (artists && Array.isArray(artists) && artists.length > 0) {
-      return artists;
-    } else {
-      return noDataIzT('artists');
-    }
-  } catch (error) {
-    errorApiIzT(error);
+  const data = await fetchData(DATA_PASS, params);
+  if (!data) return;
+
+  const artists = data.artists;
+  MAX_PAGE_ARTIST = Math.ceil(data.totalArtists / params.limit);
+
+  if (artists && Array.isArray(artists) && artists.length > 0) {
+    return artists;
+  } else {
+    return noDataIzT('artists');
   }
 }
 
 export async function getArtistAlbums(id) {
-  try {
-    const res = await axios.get(`artists/${id}/albums`);
-    console.log('RAW albums response:', res.data);
-    return res.data.albumsList || [];
-  } catch (error) {
-    errorApiIzT(error);
-  }
+  const data = await fetchData(`artists/${id}/albums`);
+  if (!data) return [];
+  console.log('RAW albums response:', data);
+  return data.albumsList || [];
 }
 
 export async function getArtist(id) {
-  try {
-    DATA_PASS = `artists/${id}`;
-    const res = await axios.get(DATA_PASS, {});
-
-    const artist = res.data;
-    if (artist) {
-      return artist;
-    } else {
-      return noDataIzT('artist');
-    }
-  } catch (error) {
-    errorApiIzT(error);
-  }
-  
+  DATA_PASS = `artists/${id}`;
+  const artist = await fetchData(DATA_PASS);
+  if (!artist) return noDataIzT('artist');
+  return artist;
 }
 
 export async function getAlbumTracks(albumId) {
-  try {
-    const res = await axios.get(`albums/${albumId}/tracks`);
-    console.log('RAW tracks response:', res.data);
-    return res.data.tracks || [];
-  } catch (error) {
-    errorApiIzT(error);
-    return [];
+  const data = await fetchData(`albums/${albumId}/tracks`);
+  if (!data) return [];
+  console.log('RAW tracks response:', data);
+  return data.tracks || [];
+}
+
+// ================= FEEDBACKS =================
+export async function getFeedbackByQuery(limit = 10, page = 1) {
+  const data = await fetchData('feedbacks', { limit, page });
+  if (!data) return [];
+  const feedbacks = data.data;
+  if (feedbacks && Array.isArray(feedbacks) && feedbacks.length > 0) {
+    return feedbacks;
+  } else {
+    return noDataIzT('feedbacks');
   }
 }
 
-
 export async function getRandomPageFeedbacks() {
-  try {
-    DATA_PASS = 'feedbacks';
-    const fullFeedbacks = await axios.get(DATA_PASS, {});
-    const MAX_PAGE_FEEDBACKS = Math.ceil(fullFeedbacks.data.data.length / 10);
-    const page = getRandomInt(MAX_PAGE_FEEDBACKS);
-    const params = {
-      limit: 10,
-      page: page,
-    };
-    const res = await axios.get(DATA_PASS, { params });
+  const firstPage = await getFeedbackByQuery(1, 1);
+  if (!firstPage) return [];
 
-    const feedbacks = res.data.data;
-    if (feedbacks && Array.isArray(feedbacks) && feedbacks.length > 0) {
-      return feedbacks;
-    } else {
-      return noDataIzT('feedbacks');
-    }
-  } catch (error) {
-    errorApiIzT(error);
-  }
+  // Если API возвращает total, используем его, иначе берем длину первого запроса
+  const total = firstPage.total || firstPage.length;
+  const page = getRandomInt(Math.ceil(total / 10));
+  return await getFeedbackByQuery(10, page);
 }
 
 export async function postFeedback(nameArtist, ratingArtist, descArtist) {
@@ -101,18 +98,10 @@ export async function postFeedback(nameArtist, ratingArtist, descArtist) {
     descr: descArtist,
   };
 
-  DATA_PASS = 'feedbacks';
-
-  await axios
-    .post(DATA_PASS, newFeedback)
-    .then(response => {
-      successDataIzT(response);
-    })
-    .catch(error => {
-      errorApiIzT(error);
-    });
-}
-
-function getRandomInt(n) {
-  return Math.floor(Math.random() * n) + 1;
+  try {
+    const response = await axios.post('feedbacks', newFeedback);
+    successDataIzT(response);
+  } catch (error) {
+    errorApiIzT(error);
+  }
 }
