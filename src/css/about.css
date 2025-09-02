@@ -2,7 +2,6 @@
 .about-container {
   margin: 0;
   padding: 64px 16px;
-  min-width: 320px;
   height: 716px;
   background-color: #060307;
 }
@@ -53,7 +52,6 @@
 @media only screen and (min-width: 768px) {
   .about-container {
     padding: 64px 32px;
-    min-width: 768px;
     height: 836px;
   }
 
@@ -89,9 +87,11 @@
 
 @media only screen and (min-width: 1440px) {
   .about-container {
-    padding: 112px 64px;
-    min-width: 1440px;
+    padding: 112px 0;
     height: 888px;
+    max-width: 1312px; /* ограничиваем ширину */
+    margin-left: auto; /* центрирование */
+    margin-right: auto; /* центрирование */
   }
 
   .about-container-flex {
@@ -102,6 +102,7 @@
   .about-img {
     width: 640px;
     height: 664px;
+    min-width: auto;
   }
 
   .about-text {

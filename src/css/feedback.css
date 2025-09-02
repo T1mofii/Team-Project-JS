@@ -12,7 +12,7 @@
 }
 
 /* === Блок відгуків (основний контейнер) === */
-.feedback-section {
+.feedback-container {
   margin: 50px 20px 0 20px;
   padding: 64px 16px 32px 16px;
 }
@@ -185,8 +185,10 @@
 
 /* === Адаптив (планшет) === */
 @media (min-width: 768px) {
-  .feedback-section {
-    padding: 64px 32px;
+  .feedback-container {
+    max-width: 768px;
+    margin-left: auto; /* центрируем */
+    margin-right: auto; /* центрируем */
   }
 
   .swiper-button-next,
@@ -215,6 +217,12 @@
 @media (min-width: 1440px) {
   .feedback-section {
     padding: 112px 64px;
+  }
+
+  .feedback-container {
+    max-width: 1312px; /* ограничиваем ширину */
+    margin-left: auto; /* центрируем */
+    margin-right: auto; /* центрируем */
   }
 
   .swiper-wrapper {
