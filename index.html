@@ -14,10 +14,42 @@
     <script type="module" crossorigin src="/Team-Project-JS/index.js"></script>
     <link rel="modulepreload" crossorigin href="/Team-Project-JS/assets/vendor-CBES6XuS.js">
     <link rel="stylesheet" crossorigin href="/Team-Project-JS/assets/vendor-BfMlxmOj.css">
-    <link rel="stylesheet" crossorigin href="/Team-Project-JS/assets/index-Dil3iO0d.css">
+    <link rel="stylesheet" crossorigin href="/Team-Project-JS/assets/index-DCw72q-3.css">
   </head>
   <body>
-    
+    <header class="header">
+  <div class="container">
+    <div class="header-container">
+      <a href="/index.html" class="logo">
+        <img
+          src="../img/header/logo.svg"
+          alt="Логотип"
+          width="106"
+          height="30"
+        />
+      </a>
+      <div>
+        <nav class="header-nav">
+          <ul class="nav-list">
+            <li><a href="#artists" class="nav-link">Artists</a></li>
+            <li><a href="#about" class="nav-link">About Us</a></li>
+            <li><a href="#feedback" class="nav-link">Reviews</a></li>
+          </ul>
+        </nav>
+
+        <button class="burger-btn mob-is-open" data-menu-open>
+          <img
+            src="../img/header/burger.svg"
+            alt="burger"
+            width="16"
+            height="12"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
 
     <main>
         <section class="hero">
@@ -181,7 +213,30 @@
   </div>
 </div>
 
-    
+    <div class="mobile-menu" data-menu>
+  <div class="header-mobile-menu">
+    <a href="/index.html" class="logo">
+      <img src="../img/header/logo.svg" alt="Логотип" width="106" height="30" />
+    </a>
+    <button class="menu-close-btn" data-menu-close>
+      <img
+        src="../img/header/btn-close.svg"
+        alt="close"
+        width="12"
+        height="12"
+      />
+    </button>
+  </div>
+
+  <nav class="mob-menu-nav">
+    <ul class="mob-menu-list">
+      <li><a class="mob-menu-link" href="#artists">Artists</a></li>
+      <li><a class="mob-menu-link" href="#about">About Us</a></li>
+      <li><a class="mob-menu-link" href="#feedback">Reviews</a></li>
+    </ul>
+  </nav>
+</div>
+
     
 
   </body>
