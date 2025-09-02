@@ -1,0 +1,255 @@
+/* Artist */
+
+.artist-container {
+  padding: 64px 16px;
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+.artists-title {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  margin-bottom: 16px;
+ 
+}
+
+.artist-second-title {
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #fff;
+  font-family: 'Epilogue', sans-serif;
+  margin-bottom: 32px;
+}
+
+.artist-card {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.artist-card-item:last-of-type {
+  margin-bottom: 32px;
+}
+
+.artist-card-img {
+  display: block;
+  border-radius: 16px;
+  width: 100%;
+  height: 177px;
+  object-fit: cover;
+  margin-bottom: 24px;
+}
+
+.artist-item-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.item-info-genre {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 4px 10px;
+  height: 32px;
+
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff;
+  text-align: center;
+}
+
+.card-item-title {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: #fff;
+  font-family: 'Epilogue', sans-serif;
+  margin-bottom: 8px;
+}
+
+.card-item-info {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.artist-learn-btn {
+  border: none;
+  background-color: inherit;
+
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-learn-more-cont {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-learn-more-cont:hover,
+.btn-learn-more-cont:focus {
+  opacity: 0.6;
+}
+
+.artist-load-more-btn {
+  display: none;
+}
+
+.artist-load-more-btn-is-active {
+  border: #764191;
+  border-radius: 12px;
+  padding: 10px 24px;
+  width: 288px;
+  height: 47px;
+  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background-color: #764191;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.artist-load-more-btn:hover,
+.artist-load-more-btn:focus {
+  box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
+    inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
+  background-color: #764191;
+  opacity: 0.6;
+}
+
+.is-hidden {
+  display: none;
+}
+
+.loader-hidden {
+  display: none;
+}
+
+.is-active-loader {
+  margin: 15px auto;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #764191;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  display: block;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Styles for Tablet devices */
+@media only screen and (min-width: 768px) {
+  .artist-container {
+    padding: 64px 32px;
+    min-width: 768px;
+  }
+  .artist-card {
+    gap: 32px;
+  }
+  .artist-card-item:last-of-type {
+    margin-bottom: 64px;
+  }
+  .artist-card-img {
+    width: 100%;
+    height: 432px;
+  }
+  .artist-load-more-btn-container {
+    display: flex;
+    justify-content: center;
+  }
+  .artist-load-more-btn-is-active {
+    width: 340px;
+  }
+}
+
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1440px) {
+  .artist-container {
+    padding: 112px 64px;
+    margin: 0 auto;
+    min-width: 1440px;
+  }
+  .artists-title {
+    text-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+  .artist-second-title {
+    font-size: 60px;
+    max-width: 523px;
+    margin-bottom: 80px;
+  }
+  .artist-card {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .artist-card-img {
+    width: 100%;
+    height: 393px;
+  }
+  .card-item-info {
+    max-width: 640px;
+  }
+  .artist-load-more-btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .artist-load-more-btn-is-active {
+    width: 170px;
+    height: 47px;
+  }
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal.is-open {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

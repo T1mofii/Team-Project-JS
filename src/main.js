@@ -1,0 +1,8 @@
+import "./js/about"
+import "./js/artists"
+import "./js/feedback"
+import "./js/footer"
+import "./js/hamburger-menu"
+import "./js/hero"
+import "./js/modal-menu"
+import "./js/requests"
