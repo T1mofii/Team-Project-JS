@@ -3,9 +3,13 @@
     color: #fff;
     position: relative;
     isolation: isolate;
-    padding: 64px 0;
+    /* padding: 64px 0; */
 }
-
+.hero .container {
+    padding: 64px 16px 0 16px;
+    max-width: 320px;
+    margin: 0 auto;
+}
 .hero::before {
     content: "";
     position: absolute;
@@ -63,7 +67,9 @@
     margin-bottom: 24px;
 }
 .div-a {
+    margin: 0 auto;
     margin-bottom: 64px;
+   
 }
 .hero-btn {
     border-radius: 12px;
@@ -103,8 +109,13 @@
 
 
 @media screen and (min-width: 768px) {
-    .container {
-
+    .hero .container {
+        padding: 32px 32px 0 32px;
+        max-width: 768px;
+        margin: 0 auto;
+    }
+    .div-a {
+        margin: 0;
     }
     .hero {
        padding:32px 32px 32px 0;
@@ -147,6 +158,7 @@
 @media screen and (min-width: 1440px) {
    .hero .container {
     padding: 0 64px;
+    min-width: 1440px;
    }
 
    .hero {
