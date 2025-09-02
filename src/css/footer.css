@@ -3,7 +3,7 @@ footer {
 }
 
 footer .container {
-    max-width: 320px;
+    /* max-width: 320px; */
     width: 100%;
     padding: 48px 16px;
 
@@ -11,6 +11,7 @@ footer .container {
     flex-direction: column;
     gap: 48px;
     align-content: center;
+    justify-content: center;
 }
 
 footer .container nav {
@@ -74,8 +75,9 @@ footer .social-section {
 @media screen and (min-width:768px) {
     footer .container {
         max-width: 768px;
-        padding: 80px 64px;
+        padding: 80px 32px;
         gap: 80px;
+        margin: 0 auto;
     }
 
     footer nav ul {
@@ -105,7 +107,7 @@ footer .social-section {
 @media screen and (min-width:1440px) {
     footer .container {
         max-width: 1440px;
-        padding: 80px 132px;
+        padding: 80px 64px;
     }
 
     footer .social-icons .social-icon {

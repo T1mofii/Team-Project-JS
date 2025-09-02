@@ -5,6 +5,8 @@
   width: 100%;
   z-index: 1000;
   background-color: #060307;
+  margin: 0 auto;
+  max-width: 320px;
 }
 
 .header-container {
@@ -40,9 +42,14 @@
 
 /* Styles for Tablet devices */
 @media screen and (min-width: 768px) {
+  .header {
+   min-width: 100%;
+  }
   .header-container {
-    padding: 10px 64px 0px;
+    /* padding: 10px 64px 0px; */
     min-height: 72px;
+    max-width: 768px;
+    margin: 0 auto;
     /* justify-content: flex-end; */
   }
 
@@ -61,5 +68,13 @@
 
   .burger-btn {
     display: none;
+  }
+}
+
+
+@media screen and (min-width: 1440px) {
+  .header-container {
+    max-width: 1440px;
+    padding: 10px 64px 0px
   }
 }
