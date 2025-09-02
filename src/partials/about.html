@@ -1,53 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<section class="about-container" id="about">
+  <div class="about-container-flex">
+    <div class="about-img">
+      <picture>
+        <source
+          srcset="./img/about/desktop-1x.png 1x, ./img/about/desktop-2x.png 2x"
+          media="(min-width: 1440px)"
+        />
+        <source
+          srcset="./img/about/tablet-1x.png 1x, ./img/about/tablet-2x.png 2x"
+          media="(min-width: 768px) and (max-width: 1439px)"
+        />
+        <source
+          srcset="./img/about/mobile-1x.png 1x, ./img/about/mobile-2x.png 2x"
+          media="(min-width: 320px) and (max-width: 767px)"
+        />
+        <img
+          class="about-img"
+          src="./img/about/desctop-1x.png"
+          alt="about-images"
+        />
+      </picture>
+    </div>
 
-</head>
-<body>
-    
-    <section class="about-container" id="about">
-        <div class="about-container-flex">
-            <div class="about-img">
-            <picture>
-                <source srcset="
-                ./img/about/desktop-1x.png 1x, 
-                ./img/about/desktop-2x.png 2x" 
-                media="(min-width: 1440px)">
-                <source srcset="
-                ./img/about/tablet-1x.png 1x, 
-                ./img/about/tablet-2x.png 2x"
-                media="(min-width: 768px) and (max-width: 1439px)">
-                <source srcset="
-                ./img/about/mobile-1x.png 1x, 
-                ./img/about/mobile-2x.png 2x" 
-                media="(min-width: 320px) and (max-width: 767px)">
-                <img class="about-img" 
-                src="./img/about/desctop-1x.png" 
-                alt="about-images">
-            </picture>
-    
-            </div>
+    <div class="about-text">
+      <img class="about-logo" src="./img/about/logo-about.svg" alt="Logo" />
 
-            <div class="about-text">
-
-                <img class="about-logo" 
-                src="./img/about/logo-about.svg" 
-                alt="Logo">
-
-                <h1 class="about-title">
-                    About ArtistsHub
-                </h1>
-                <p class="about-text-info">
-                    At ArtistsHub, our mission is to connect music lovers with the artists they adore. We strive to create a vibrant
-                    community where discovering new music is as enjoyable as listening to it.
-                </p>
-    
-            </div>
-        </div>
-    </section>
-
-</body>
-</html>
+      <h1 class="about-title">About ArtistsHub</h1>
+      <p class="about-text-info">
+        At ArtistsHub, our mission is to connect music lovers with the artists
+        they adore. We strive to create a vibrant community where discovering
+        new music is as enjoyable as listening to it.
+      </p>
+    </div>
+  </div>
+</section>
