@@ -6,7 +6,7 @@
     header: document.querySelector('.header'),
   };
 
-  const scrollLinks = document.querySelectorAll('.mob-menu-link, .nav-link');
+  const scrollLinks = document.querySelectorAll('.mob-menu-link, .nav-link, .footer-nav');
 
   function toggleModal() {
     refs.modal.classList.toggle('mob-is-open');
