@@ -42,7 +42,7 @@ function createArtists(artists) {
         } else {
             maxLength = 139; 
         }
-    const shortBio = truncateText(artist.strBiographyEN, maxLength);
+        const shortBio = truncateText(artist.strBiographyEN, maxLength);
         
        return `<li class="artist-card-item">
                 <img class="artist-card-img" src="${artist.strArtistThumb}" alt="${artist.strArtist}" >
@@ -64,10 +64,9 @@ function createArtists(artists) {
             </li>`;
     }).join('');
     return markup;
-    
 }
 
-// НОВАЯ ФУНКЦИЯ: Вставка карточек в DOM
+// Вставка карточек DOM
 function renderArtistsToDOM(artistsMarkup) {
     if (!refs.cardItem) {
         console.error('Container .js-artist-card not found');
@@ -76,7 +75,7 @@ function renderArtistsToDOM(artistsMarkup) {
     refs.cardItem.innerHTML = artistsMarkup;
 }
 
-// Functions
+// Functions?
 function showLoader() {
     if (refs.loader) {
         refs.loader.classList.add('is-active-loader');
@@ -99,7 +98,7 @@ function hideLoadMoreButton() {
     refs.btnLoadMore.classList.remove('artist-load-more-btn-is-active');
 }
 
-// Функция для обработки клика на кнопку Learn More
+// Обробка кліка load more
 async function handleLearnMoreClick(event) {
     const learnMoreBtn = event.target.closest('.artist-learn-btn');
     if (!learnMoreBtn) return;
@@ -117,12 +116,10 @@ async function handleLearnMoreClick(event) {
     console.log('Opening modal for artist:', artistName, 'ID:', artistId);
     
     try {
-        // Показываем лоадер на кнопке
         const originalText = learnMoreBtn.textContent;
         learnMoreBtn.disabled = true;
         learnMoreBtn.textContent = 'Loading...';
         
-        // ВАЖНО: используем вашу существующую функцию openArtistModal
         await openArtistModal(artistId);
         
     } catch (error) {
@@ -131,7 +128,6 @@ async function handleLearnMoreClick(event) {
             message: 'Failed to open artist details. Please try again.'
         });
     } finally {
-        // Восстанавливаем кнопку
         learnMoreBtn.disabled = false;
         learnMoreBtn.textContent = 'Learn More';
     }
@@ -141,7 +137,7 @@ let currentPage;
 let maxPage = 0;
 const pageSize = 8;
 
-// Слухач на завантаження сторінки для відображення стрічки артистів.
+// Слухач на завантаження сторінки
 document.addEventListener('DOMContentLoaded', async () => {
     currentPage = 1;
     showLoader();
@@ -150,10 +146,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const arrOfArtist = res.artists;
         const markup = createArtists(arrOfArtist);
         
-        // ВСТАВЛЯЕМ разметку в DOM - ЭТО ГЛАВНОЕ ИСПРАВЛЕНИЕ
         renderArtistsToDOM(markup);
 
-        // Добавляем обработчик кликов на карточки
         refs.cardItem.addEventListener('click', handleLearnMoreClick);
 
         maxPage = Math.ceil(res.totalArtists / pageSize);
@@ -177,7 +171,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-// Слухач на додаткове завантаження сторінки для відображення стрічки артистів.
+// Слухач на Load More
 refs.btnLoadMore.addEventListener('click', async () => {
     currentPage += 1;
     hideLoadMoreButton();
@@ -193,17 +187,17 @@ refs.btnLoadMore.addEventListener('click', async () => {
         }
         const arrOfArtist = res.artists;
         const markup = createArtists(arrOfArtist);
-        
-        // ВСТАВЛЯЕМ новую разметку в конец существующей
+
+        // Вставляємо нові картки
         refs.cardItem.insertAdjacentHTML('beforeend', markup);
 
-        const firstCard = document.querySelector('.artist-card-item');
-        if (!firstCard) return;
-        const cardHeight = firstCard.getBoundingClientRect().height;
-        window.scrollBy({
-            top: cardHeight * 2,
-            behavior: "smooth"
-        });
+        // Прокручуємо до першої нової картки
+        const newCards = refs.cardItem.querySelectorAll('.artist-card-item');
+        if (newCards.length > 0) {
+            const firstNewCard = newCards[newCards.length - arrOfArtist.length];
+            firstNewCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
     } catch (error) {
         console.error('Error loading more artists:', error);
         iziToast.error({
