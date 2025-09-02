@@ -1,42 +1,44 @@
-
 .hero {
     background: #23132b;
     color: #fff;
     position: relative;
     isolation: isolate;
-    padding: 64px 0px;
+    padding: 64px 0;
 }
 
 .hero::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  height: 80px; 
-  background: linear-gradient(
-    to bottom,
-    #060307 0%,                
-    rgba(35,19,43,0) 100%   
-  );
-  pointer-events: none;
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 80px;
+    background: linear-gradient(to bottom, #060307 0%, rgba(35, 19, 43, 0) 100%);
+    pointer-events: none;
+    z-index: 3;
 }
 
 .hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 106px; 
-  background: linear-gradient(
-    to bottom,
-    rgba(35,19,43,0) 0%,   
-    #060307 100%              
-  );
-  pointer-events: none;
-  z-index: 1;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 106px;
+    background: linear-gradient(to bottom, rgba(35, 19, 43, 0) 0%, #060307 100%);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.bgc-image {
+    position: relative;
+    height: 385px;
+    background:
+        linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 120%),
+        url('/img/hero/Content1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .hero-content {
@@ -88,17 +90,24 @@
 
 .bgc-image {             
   height: 385px;               
-  background-image: url('../img/hero/Content1.png'); 
+  background: linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 120%),
+        url('/img/hero/Content1.png'); 
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  
+  pointer-events: none;
+    z-index: 2;
 
 }
 
 
 @media screen and (min-width: 768px) {
+    .container {
+
+    }
     .hero {
-        padding: 32px 0px;
+       padding:32px 32px 32px 0;
     }
     .hero-title{
         margin-bottom: 24px;
@@ -123,20 +132,26 @@
     .div-a {
     margin-bottom: 32px;
 }
-    .bgc-image {             
-        height: 632px;               
-        background-image: url('../img/hero/Content-twp.png'); 
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-}
+    .bgc-image {
+        height: 632px;
+        background:
+                linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 120%),
+                url('/img/hero/Content-twp.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
 
 }
 
 @media screen and (min-width: 1440px) {
-    .hero {
-        padding: 0 0;
-}
+   .hero .container {
+    padding: 0 64px;
+   }
+
+   .hero {
+    padding: 0;
+   }
     .hero-content {
         max-width: 640px;
         padding: 215px 0;
@@ -158,7 +173,10 @@
         flex: 0 0 640px;              
         height: 900px;
         border-radius: 16px;
-        background: url('../img/hero/Content-three.png') center/cover no-repeat;
+        background: linear-gradient(180deg, rgba(35, 19, 43, 0) 0%, #060307 120%), url('/img/hero/Content-three.png');
+        background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
         margin: 0;                    
         align-self: flex-start;       
   }
