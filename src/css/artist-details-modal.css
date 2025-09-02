@@ -214,28 +214,24 @@
 }
 
 .albums {
-  padding: 24px 16px 32px;
-  background: #060307;
+  margin-top: 32px;
 }
 
 .albums h3 {
   font-family: 'Epilogue', sans-serif;
   font-weight: 700;
-  font-size: 24px;
-
-  /* line-height: 31px; */
-  line-height: 130%;
-  letter-spacing: -0.01em;
-  color: #fff;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
+  font-size: 22px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-secondary);
+  padding-bottom: 8px;
+  color: var(--text-primary);
 }
 
 /* АДАПТИВНАЯ СЕТКА АЛЬБОМОВ */
 .albums-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 20px;
+  gap: 24px;
 }
 
 .album {
@@ -568,36 +564,82 @@
   }
 
   .albums {
-    padding: 32px 24px 40px;
+    margin-top: 32px;
+    padding: 0 16px;
   }
 
   .albums h3 {
-    font-size: 24px;
-    margin-bottom: 28px;
+    font-family: 'Epilogue', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border-secondary);
+    padding-bottom: 8px;
+    color: var(--text-primary);
   }
 
-  .genres-list {
-    gap: 16px;
-  }
-
-  /* АДАПТИВНАЯ СЕТКА - 2 КОЛОНКИ */
   .albums-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .album {
-    padding: 20px;
+    background: var(--bg-secondary);
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid var(--border-primary);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .album:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   }
 
   .album-title {
     font-family: 'IBM Plex Sans', sans-serif;
     font-weight: 600;
     font-size: 16px;
+    margin-bottom: 12px;
+    position: relative;
+    padding-bottom: 6px;
+    color: var(--text-primary);
+  }
 
-    /* line-height: 24px; */
-    line-height: 150%;
-    color: #fff;
+  .tracks {
+    margin-top: 8px;
+  }
+
+  .track,
+  .track-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+    gap: 12px;
+    padding: 6px 0;
+    align-items: center;
+  }
+
+  .track-header {
+    font-weight: 600;
+    border-bottom: 1px solid var(--border-secondary);
+    color: var(--text-secondary);
+  }
+
+  .track span {
+    font-size: 12px;
+    padding-left: 12px;
+    color: var(--text-primary);
+  }
+
+  .track:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+  }
+
+  .track:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
   }
 
   /* ТОЛЬКО ИЗМЕНЕНИЕ РАЗМЕРОВ КОЛОНОК, ШРИФТ ОСТАЕТСЯ ФИКСИРОВАННЫМ */
@@ -730,7 +772,6 @@
   /* АДАПТИВНАЯ СЕТКА - 4 КОЛОНКИ */
   .albums-grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
   }
 
   .album {

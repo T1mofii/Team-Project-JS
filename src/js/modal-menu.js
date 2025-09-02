@@ -131,9 +131,9 @@ function renderArtist(artist, albums) {
             ${album.tracks && album.tracks.length ? `
               <div class="tracks">
                 <div class="track track-header" style="font-size: 8px !important">
-                  <span>Track</span>
-                  <span>Time</span>
-                  <span>Link</span>
+                  <span style="font-size: 8px">Track</span>
+                  <span style="font-size: 8px">Time</span>
+                  <span style="font-size: 8px">Link</span>
                 </div>
                 ${album.tracks.map(track => `
                   <div class="track">

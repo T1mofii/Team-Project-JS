@@ -1,34 +1,3 @@
-// Получаем элементы
-const feedbackModal = document.querySelector('[data-feedback-modal]');
-const openBtn = document.querySelector('[data-feedback-modal-open]');
-const closeBtn = document.querySelector('[data-feedback-modal-close]');
-
-// Открытие модалки
-openBtn.addEventListener('click', () => {
-  feedbackModal.classList.remove('is-hidden');
-});
-
-// Закрытие модалки
-closeBtn.addEventListener('click', () => {
-  feedbackModal.classList.add('is-hidden');
-});
-
-// Закрытие при клике на фон
-feedbackModal.addEventListener('click', (e) => {
-  if (e.target === feedbackModal) {
-    feedbackModal.classList.add('is-hidden');
-  }
-});
-
-// Закрытие по Esc
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && !feedbackModal.classList.contains('is-hidden')) {
-    feedbackModal.classList.add('is-hidden');
-  }
-});
-
-
-
 import Swiper from 'swiper/bundle';
 import 'swiper/css';
 import 'swiper/css/bundle';
@@ -139,3 +108,34 @@ async function initFeedback() {
 }
 
 initFeedback();
+
+// Получаем элементы
+const feedbackModal = document.querySelector('[data-feedback-modal]');
+const openBtn = document.querySelector('[data-feedback-modal-open]');
+const closeBtn = document.querySelector('[data-feedback-modal-close]');
+
+// Открытие модалки
+openBtn.addEventListener('click', () => {
+  feedbackModal.classList.remove('is-hidden');
+});
+
+// Закрытие модалки
+closeBtn.addEventListener('click', () => {
+  feedbackModal.classList.add('is-hidden');
+});
+
+// Закрытие при клике на фон
+feedbackModal.addEventListener('click', (e) => {
+  if (e.target === feedbackModal) {
+    feedbackModal.classList.add('is-hidden');
+  }
+});
+
+// Закрытие по Esc
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !feedbackModal.classList.contains('is-hidden')) {
+    feedbackModal.classList.add('is-hidden');
+  }
+});
+
+
