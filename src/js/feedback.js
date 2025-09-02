@@ -106,36 +106,3 @@ async function initFeedback() {
     console.error('Ошибка при загрузке фидбеков:', err);
   }
 }
-
-// initFeedback();
-
-// // Получаем элементы
-// const feedbackModal = document.querySelector('[data-feedback-modal]');
-// const openBtn = document.querySelector('[data-feedback-modal-open]');
-// const closeBtn = document.querySelector('[data-feedback-modal-close]');
-
-// // Открытие модалки
-// openBtn.addEventListener('click', () => {
-//   feedbackModal.classList.remove('is-hidden');
-// });
-
-// // Закрытие модалки
-// closeBtn.addEventListener('click', () => {
-//   feedbackModal.classList.add('is-hidden');
-// });
-
-// // Закрытие при клике на фон
-// feedbackModal.addEventListener('click', (e) => {
-//   if (e.target === feedbackModal) {
-//     feedbackModal.classList.add('is-hidden');
-//   }
-// });
-
-// // Закрытие по Esc
-// document.addEventListener('keydown', (e) => {
-//   if (e.key === 'Escape' && !feedbackModal.classList.contains('is-hidden')) {
-//     feedbackModal.classList.add('is-hidden');
-//   }
-// });
-
-
