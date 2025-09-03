@@ -1,0 +1,35 @@
+
+
+<div class="feedback-backdrop is-hidden" data-feedback-modal>
+  <div class="feedback-modal">
+    <button type="button" class="modal-close-btn" data-feedback-modal-close>&times;</button>
+    
+    <div class="container">
+      <h2 class="modal-title">Submit feedback</h2>
+      
+     <form class="feedback-form js-feedback-form">
+        
+    <div class="form-field">
+        <label class="form-label" for="user-name">Name</label>
+        <input class="form-input" type="text" id="user-name" name="name" required placeholder="Emily">
+    </div>
+
+    <div class="form-field">
+        <label class="form-label" for="user-message">Message</label>
+        <textarea class="form-textarea" id="user-message" name="message" rows="5" required placeholder="Type your message..."></textarea>
+    </div>
+    <div class="form-field">
+  <label class="form-label visually-hidden">Rating</label>
+  <div class="rating">
+    <input type="radio" id="star-5" name="rating" value="5" required /><label for="star-5" title="Excellent"></label>
+    <input type="radio" id="star-4" name="rating" value="4" /><label for="star-4" title="Very Good"></label>
+    <input type="radio" id="star-3" name="rating" value="3" /><label for="star-3" title="Average"></label>
+    <input type="radio" id="star-2" name="rating" value="2" /><label for="star-2" title="Poor"></label>
+    <input type="radio" id="star-1" name="rating" value="1" /><label for="star-1" title="Terrible"></label>
+  </div>
+</div>
+    <button type="submit" class="form-submit-btn">Submit</button>
+</form>
+    </div>
+    </div>
+</div>
