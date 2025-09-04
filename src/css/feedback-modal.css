@@ -4,6 +4,10 @@ textarea {
   outline: none;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .feedback-modal *,
 .feedback-modal *::before,
 .feedback-modal *::after {
@@ -34,9 +38,9 @@ textarea {
   pointer-events: auto;
 }
 
-.feedback-backdrop.is-hidden {
+/* .feedback-backdrop.is-hidden {
   display: none;
-}
+} */
 
 /* Modal Window */
 .feedback-modal {
@@ -125,8 +129,7 @@ textarea {
 
 .form-submit-btn {
   box-shadow: 0 1px 2px 0 rgba(6, 3, 7, 0.05),
-    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px rgba(6, 3, 7, 0.15),
+    inset 0 -2px 1px 0 rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(6, 3, 7, 0.15),
     inset 0 2px 1px 0 rgba(255, 255, 255, 0.25),
     inset 0 32px 24px 0 rgba(255, 255, 255, 0.05);
   background: #764191;
@@ -142,7 +145,7 @@ textarea {
 
 /* зірочки */
 .rating {
-  direction: rtl; 
+  direction: rtl;
   display: inline-flex;
   align-self: flex-start;
 }
@@ -158,8 +161,6 @@ textarea {
   cursor: pointer;
   transition: color 200ms ease-in-out;
 }
-
-
 
 /*:hover, :focus*/
 .form-input:focus,
@@ -187,9 +188,8 @@ textarea {
 .rating > label:hover::before,
 .rating > label:hover ~ label::before,
 .rating > input:checked ~ label::before {
- color: #764191;
+  color: #764191;
 }
-
 
 .visually-hidden {
   position: absolute;
@@ -204,7 +204,6 @@ textarea {
   overflow: hidden;
 }
 
-
 /* for tablet */
 
 @media (min-width: 768px) {
@@ -213,19 +212,19 @@ textarea {
     width: 704px;
     max-width: 100%;
   }
-    .modal-title {
-        font-size: 44px;
-        margin-bottom: 48px;
-    }
-    .feedback-form {
-        width: 640px;
-        gap: 24px;
-    }
-    .form-submit-btn {
-        width: 340px;
-        height: 47px;
-        align-self: center;
-    }
+  .modal-title {
+    font-size: 44px;
+    margin-bottom: 48px;
+  }
+  .feedback-form {
+    width: 640px;
+    gap: 24px;
+  }
+  .form-submit-btn {
+    width: 340px;
+    height: 47px;
+    align-self: center;
+  }
 }
 
 /* for desktop */
@@ -233,15 +232,14 @@ textarea {
   .feedback-modal {
     width: 864px;
   }
-    .modal-title {
-        font-size: 60px;
-        
-    }
-    .feedback-form {
-        width: 736px;
-    }
+  .modal-title {
+    font-size: 60px;
+  }
+  .feedback-form {
+    width: 736px;
+  }
 
-    .form-submit-btn {
-        width: 108px;
-    }
+  .form-submit-btn {
+    width: 108px;
+  }
 }

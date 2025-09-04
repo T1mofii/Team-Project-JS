@@ -111,3 +111,10 @@
     }
   }
 })();
+
+if (openModalBtn) {
+  openModalBtn.addEventListener('click', () => {
+    console.log('Клик по кнопке!');
+    toggleModal();
+  });
+}
