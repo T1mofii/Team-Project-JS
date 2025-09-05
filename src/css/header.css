@@ -87,10 +87,11 @@
 
 @media screen and (min-width: 1440px) {
   .header {
-    padding: 0 0 0 6px;
+    padding: 0 64px;
   }
 
   .header-container {
+    padding: 0 0 0 6px;
     max-width: 1440px;
     padding: 10px 64px 0px;
     padding-left: 6px;
