@@ -14,7 +14,7 @@
     <script type="module" crossorigin src="/WebTune/index.js"></script>
     <link rel="modulepreload" crossorigin href="/WebTune/assets/vendor-C-jDU7ko.js">
     <link rel="stylesheet" crossorigin href="/WebTune/assets/vendor-aPpWF3S-.css">
-    <link rel="stylesheet" crossorigin href="/WebTune/assets/index-CZAowVPY.css">
+    <link rel="stylesheet" crossorigin href="/WebTune/assets/index-BvjSsTWo.css">
   </head>
   <body>
     <header class="header">
@@ -150,7 +150,11 @@
   <div class="feedback-container" id="feedback">
     <div class="swiper">
       <div class="swiper-wrapper"></div>
-      <div class="swiper-pagination"></div>
+      <div class="custom-pagination">
+        <span class="pagination-item first"></span>
+        <span class="pagination-item middle"></span>
+        <span class="pagination-item last"></span>
+      </div>
       <div class="swiper-button-prev is-hidden">
         <svg
           width="24"
@@ -262,7 +266,9 @@
         <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" stroke-width="2" />
       </svg>
     </button>
-    <div id="artist-loader">Loading artist information...</div>
+    <div id="artist-loader">
+      <div class="loader-circle"></div>
+    </div>
     <div id="artist-content" class="hidden"></div>
   </div>
 </div>
