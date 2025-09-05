@@ -10,6 +10,7 @@
 
   function toggleModal() {
     refs.modal.classList.toggle('mob-is-open');
+    document.body.classList.add('no-scroll');
   }
 
   if (refs.openModalBtn)
