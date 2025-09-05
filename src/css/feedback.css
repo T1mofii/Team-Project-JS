@@ -13,30 +13,25 @@
 
 /* === Блок відгуків (основний контейнер) === */
 .feedback-container {
-  margin: 50px 20px 0 20px;
-  padding: 64px 16px 32px 16px;
+  padding: 64px 16px;
+  margin: 0 auto;
+  max-width: 320px;
 }
 
 .swiper {
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 16px;
 }
 
 /* === Слайд відгуку === */
 .swiper-slide {
   text-align: center;
   border-radius: 10px;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  box-sizing: border-box;
-  margin: 64px 0 16px 0;
-}
-
-.feedback-value {
-  margin-bottom: 16px;
+  z-index: 3;
 }
 
 .review {
@@ -60,8 +55,7 @@
   font-size: 18px;
   line-height: 150%;
   color: var(--color-white, #fff);
-  padding-bottom: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 /* === Зірки рейтингу === */
@@ -132,7 +126,6 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  margin-top: 20px;
 }
 
 .swiper-pagination-bullet {
@@ -187,8 +180,7 @@
 @media (min-width: 768px) {
   .feedback-container {
     max-width: 768px;
-    margin-left: auto; /* центрируем */
-    margin-right: auto; /* центрируем */
+    padding: 64px 32px;
   }
 
   .swiper-button-next,
@@ -204,25 +196,28 @@
 
   .swiper-pagination {
     gap: 15px;
-    margin-top: 30px;
   }
 
   .leave-feedback-btn {
     max-width: 340px;
     margin: 0 auto;
   }
+
+  .author {
+    margin-bottom: 30px;
+  }
 }
 
 /* === Адаптив (десктоп) === */
 @media (min-width: 1440px) {
-  .feedback-section {
-    padding: 112px 64px;
+  .feedback-container {
+    min-width: 1440px;
+    padding: 64px 64px 112px 64px;
   }
 
-  .feedback-container {
-    max-width: 1312px; /* ограничиваем ширину */
-    margin-left: auto; /* центрируем */
-    margin-right: auto; /* центрируем */
+  .swiper {
+    position: relative;
+    margin-bottom: 80px;
   }
 
   .swiper-wrapper {
@@ -237,11 +232,11 @@
   }
 
   .swiper-button-prev {
-    left: 40px;
+    left: 0px;
   }
 
   .swiper-button-next {
-    right: 40px;
+    right: 0px;
   }
 
   .review {
@@ -249,14 +244,6 @@
     line-height: 130%;
     max-height: 320px;
     padding: 0 223px;
-  }
-
-  .author {
-    margin-bottom: 60px;
-  }
-
-  .swiper-pagination {
-    margin-top: 40px;
   }
 
   .leave-feedback-btn {

@@ -171,7 +171,7 @@
   font-family: 'Epilogue', sans-serif;
   font-weight: 700;
   font-size: 20px;
-
+  margin: 52px 0 16px;
   /* line-height: 26px; */
   line-height: 130%;
   letter-spacing: -0.01em;
@@ -221,8 +221,8 @@
   font-family: 'Epilogue', sans-serif;
   font-weight: 700;
   font-size: 22px;
-  margin-bottom: 16px;
-  border-bottom: 1px solid var(--border-secondary);
+  margin-left: 11px;
+  border-bottom: none;
   padding-bottom: 8px;
   color: var(--text-primary);
 }
@@ -241,6 +241,7 @@
   border: 1px solid var(--border-primary);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
+  margin: 16px 8px 32px;
 }
 
 .album:hover {
@@ -276,6 +277,19 @@
 }
 
 /* ФИКСИРОВАННЫЕ РАЗМЕРЫ ШРИФТОВ ДЛЯ ТРЕКОВ */
+
+.track:nth-child(even),
+.album .tracks .track:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  border-bottom: none;
+}
+
+.track span:first-child,
+.album .tracks .track span:first-child {
+  padding-left: 8px; /* небольшой отступ для мобилки */
+}
+
 .track-header,
 .album .tracks .track-header {
   display: grid;
@@ -297,7 +311,7 @@
   grid-template-columns: 1fr 60px 50px;
   gap: 12px;
   padding: 12px 0;
-  border-bottom: 1px solid var(--border-primary);
+  border-bottom: none;
   color: var(--text-primary);
   font-size: 12px !important;
   font-weight: 400;
@@ -564,8 +578,8 @@
   }
 
   .albums {
-    margin-top: 32px;
-    padding: 0 16px;
+    margin-top: 24px;
+    padding: 0 24px;
   }
 
   .albums h3 {
@@ -580,11 +594,12 @@
 
   .albums-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
 
   .album {
+    margin: 0;
     background: var(--bg-secondary);
     padding: 16px;
     border-radius: 12px;
