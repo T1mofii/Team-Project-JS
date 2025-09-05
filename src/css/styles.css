@@ -11,8 +11,3 @@
 @import url('./footer.css');
 @import url('./menu-popup.css');
 @import url('./feedback-modal.css');
-
-html,
-body {
-  overflow-x: hidden;
-}
