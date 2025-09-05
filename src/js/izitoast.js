@@ -6,7 +6,7 @@ export function noDataIzT(message) {
     iziToast.show({
       title: '❌',
       message: `Sorry, there are no ${message}.`,
-      color: 'red',
+      color: '#764191',
       position: 'topRight',
       messageColor: 'white',
       titleColor: 'white',
@@ -19,7 +19,7 @@ export function errorApiIzT(error) {
   if (error.message) {
     iziToast.show({
       title: 'Error',
-      color: 'red',
+      color: '#764191',
       position: 'topRight',
       messageColor: 'white',
       titleColor: 'white',
@@ -39,4 +39,64 @@ export function successDataIzT(response) {
       timeout: 5000,
     });
   }
+}
+
+export function successFeedback(message) {
+  iziToast.show({
+    title: '🎉 Success!',
+    message: message,
+    color: '#764191',          // зелёный
+    position: 'topRight',
+    timeout: 4000,
+    progressBar: true,
+    transitionIn: 'fadeInDown',
+    transitionOut: 'fadeOutUp',
+    close: true,
+    icon: '💌',
+  });
+}
+
+export function errorFeedback(message) {
+  iziToast.show({
+    title: '❌ Error',
+    message: message,
+    color: '#764191',          // красный
+    position: 'topRight',
+    timeout: 5000,
+    progressBar: true,
+    transitionIn: 'flipInX',
+    transitionOut: 'flipOutX',
+    close: true,
+    icon: '⚠️',
+  });
+}
+
+export function infoFeedback(message) {
+  iziToast.show({
+    title: 'ℹ️ Info',
+    message: message,
+    color: '#764191',          // синий
+    position: 'topRight',
+    timeout: 4000,
+    progressBar: true,
+    transitionIn: 'bounceInLeft',
+    transitionOut: 'bounceOutRight',
+    close: true,
+    icon: '💡',
+  });
+}
+
+export function warningFeedback(message) {
+  iziToast.show({
+    title: '⚠️ Warning',
+    message: message,
+    color: '#764191',          // жёлтый
+    position: 'topRight',
+    timeout: 4000,
+    progressBar: true,
+    transitionIn: 'flipInY',
+    transitionOut: 'flipOutY',
+    close: true,
+    icon: '⚡',
+  });
 }
