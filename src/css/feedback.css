@@ -1,3 +1,26 @@
+/* Custom pignation */
+
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 16px 0 20px;
+}
+
+.pagination-item {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-neutral, #828183);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.pagination-item.active {
+  background-color: var(--color-affair, #764191);
+  transform: scale(1.3);
+}
+
 /* === Прихований заголовок для доступності === */
 .visually-hidden {
   position: absolute !important;
@@ -59,13 +82,23 @@
 }
 
 /* === Зірки рейтингу === */
-.stars {
+.rating {
   display: flex;
   justify-content: center;
   gap: 4px;
-  font-size: 24px;
-  color: #764191;
   margin-bottom: 32px;
+}
+
+.stars-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 32px;
+}
+
+.star {
+  width: 24px;
+  height: 24px;
 }
 
 /* === Кнопки навігації Swiper (стрілки) === */

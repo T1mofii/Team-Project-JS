@@ -82,13 +82,19 @@
   justify-content: center;
   align-items: center;
   height: 300px;
-  color: var(--text-secondary);
-  font-size: 16px;
-  font-weight: 400;
 }
 
 #artist-loader.hidden {
   display: none;
+}
+
+#artist-loader .loader-circle {
+  border: 6px solid #f3f3f3; /* цвет основной границы */
+  border-top: 6px solid #764191; /* цвет "вращающейся" части */
+  border-radius: 50%; /* делает кружок круглым */
+  width: 40px; /* ширина */
+  height: 40px; /* высота */
+  animation: spin 1s linear infinite; /* анимация вращения */
 }
 
 #artist-content {
